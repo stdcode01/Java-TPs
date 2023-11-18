@@ -1,10 +1,12 @@
+import java.util.Arrays;
+
 class Agence {
     String num , addresse;
     Client [] clientes;
-   Compte[] comptes  ;
-    
-    
- public Agence(String num, String addresse, Client[] clientes, Compte[] comptes) {
+    Compte[] comptes  ;
+
+
+    public Agence(String num, String addresse, Client[] clientes, Compte[] comptes) {
         this.num = num;
         this.addresse = addresse;
         this.clientes = clientes;
@@ -17,30 +19,42 @@ class Agence {
         return comptes[i] ;
     }
     public void AddClient(Client c){
-        
+
     }
     public int getNbClients(){
-        
+
         return clientes.length;
     }
     public int getNbComptes(){
-         
+
         return comptes.length;
     }
+
+    @Override
+    public String toString() {
+        return "Agence{" +
+                "num='" + num + '\'' +
+                ", addresse='" + addresse + '\'' +
+                ", clientes=" + Arrays.toString(clientes) +
+                ", comptes=" + Arrays.toString(comptes) +
+                '}';
+    }
 }
+
+
 class Compte{
-   String code ;
+    String code ;
     protected double solde;
     protected Agence lAgence;
     protected Client Proprties;
 
-public Compte(String code, double solde, Agence lAgence, Client proprties) {
+    public Compte(String code, double solde, Agence lAgence, Client proprties) {
         this.code = code;
         this.solde = solde;
         this.lAgence = lAgence;
         Proprties = proprties;
     }
-    
+
     public String getCode() {
         return code;
     }
@@ -53,13 +67,25 @@ public Compte(String code, double solde, Agence lAgence, Client proprties) {
     void retirer(double rt){
         // -rt
     }
+
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "code='" + code + '\'' +
+                ", solde=" + solde +
+                ", lAgence=" + lAgence +
+                ", Proprties=" + Proprties +
+                '}';
+    }
 }
+
+
 class Client{
-        String code ,nom ,prenom,addresse;
+    String code ,nom ,prenom,addresse;
     Agence monAgence;
     Compte[] mesComptes ;
 
- public Client(String code, String nom, String prenom, String addresse, Agence monAgence, Compte[] mesComptes) {
+    public Client(String code, String nom, String prenom, String addresse, Agence monAgence, Compte[] mesComptes) {
         this.code = code;
         this.nom = nom;
         this.prenom = prenom;
@@ -79,10 +105,23 @@ class Client{
     }
     public void addCompt(Compte c){
         // add compte by create new array(lenght++) and copy old one on it;
-   }
+    }
     public void deposer(int i,double dp){}
     public void retirer(int i,double rt){}
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "code='" + code + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", addresse='" + addresse + '\'' +
+                ", monAgence=" + monAgence +
+                ", mesComptes=" + Arrays.toString(mesComptes) +
+                '}';
+    }
 }
+
 class CompteEpagne{
  public double taux;
  
@@ -97,19 +136,37 @@ class CompteEpagne{
         this.taux = taux;
     }
     public void calculInteret(){}
+    
+    @Override
+    public String toString(){
+        return "CompteEpagne{"+ "taux = "+taux+" }";
+    }
   }
+  
 class ComptePayment{
     final double taux_operation ;
    
  public ComptePayment(double t){
      taux_operation=t;
- }   
+ }  
+ 
  public void deposer(double dp){
    // + dp  
  }
- 
-  public void retirer(double rt){
+ public void retirer(double rt){
    // - rt   
  }
  
+    @Override
+    public String toString(){
+        return "ComptePayment{"+ "taux_operation = "+taux_operation+" }";
+    }
+}
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
 }
