@@ -6,36 +6,26 @@ class Compte {
     protected Client Propriataire;
 
     public Compte() {
-        cNB++;
-        // this.code =getClass.getName()+cNB;
         // this.solde = solde;
         // this.lAgence = lAgence;
         // this.Propriataire = Propriataire;
     }
 
-    public String getCode() {
+    String getCode() {
         return this.code;
     };
 
     public void setCode(String code) {
-
     };
 
-    void deposer(double dp) {
-
+    public void deposer(double dp) {
     };
 
-    void retirer(double rt) {
-        // -rt
+    public void retirer(double rt) {
     }
 
-    @Override
-    public String toString() {
-        return "Compte{" +
-                "code='" + code + '\'' +
-                ", solde=" + solde +
-                ", lAgence=" + lAgence +
-                ", Proprties=" + Propriataire +
-                '}';
+    double getSold() {
+        return solde;
     }
+
 }

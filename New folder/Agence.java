@@ -2,14 +2,18 @@ import java.util.Arrays;
 
 class Agence {
 
-    private static int i = 0;
-    String num, addresse;
-    Client[] clientes = new Client[2];
-    Compte[] comptes = new Compte[2];
+    private static int i = 0, j = 0;
+    private String num, addresse;
+    private Client[] clientes = new Client[100];
+    private Compte[] comptes = new Compte[150];
 
     public Agence(String num, String addresse) {
         this.num = num;
         this.addresse = addresse;
+    }
+
+    String getNum() {
+        return this.num;
     }
 
     public Client getClient(int i) {
@@ -21,7 +25,13 @@ class Agence {
     }
 
     public void AddClient(Client c) {
-        clientes[i] = c;
+        clientes[j] = c;
+        j++;
+
+    }
+
+    public void AddCompte(Compte c) {
+        comptes[i] = c;
         i++;
 
     }
@@ -38,11 +48,26 @@ class Agence {
 
     @Override
     public String toString() {
-        return "Agence{" +
-                "num='" + num + '\'' +
-                ", addresse='" + addresse + '\'' +
-                ", clientes=" + "Arrays.toString(clientes)" +
-                ", comptes=" + Arrays.toString(comptes) +
-                '}';
+
+        StringBuilder res = new StringBuilder(
+                "Agence{" +
+                        "num='" + num + '\'' +
+                        ", addresse='" + addresse + '\'' +
+                        ",Clientes : [");
+
+        for (int i = 0; i < clientes.length; i++) {
+            if (clientes[i] != null)
+                res.append(clientes[i].nom).append(" ")
+                        .append(clientes[i].prenom).append(" - ");
+        }
+        res.append("],Comptes : [");
+
+        for (int i = 0; i < clientes.length; i++) {
+            if (comptes[i] != null)
+                res.append(comptes[i].getCode()).append(" - ");
+        }
+        res.append("]}");
+
+        return res.toString();
     }
 }
